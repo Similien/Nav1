@@ -1,0 +1,83 @@
+@import "./vars";
+
+
+// default container
+.container{
+    width: 80%;
+    margin: 0 auto;
+}
+
+
+// open class for nav toggle
+.open{
+    display: block !important;
+}
+
+//navigtion
+@mixin listNone {
+    list-style: none;
+}
+#top{
+    background: #777;
+}
+nav{
+    background: #777;
+
+    .items{
+        @include listNone;
+        &:not(:last-child){
+            border-bottom: $items-borBot; 
+        }
+    }   
+    
+    .items{
+        color:#fff;
+        font-size: 1.1rem;
+        text-decoration: none;
+        padding:  12px;
+        display: block;
+        &:hover{
+            background: #333;
+            color: #fff;
+        }
+    }
+    
+}
+
+@media(max-width:500px){
+    
+    #top{
+        .container{
+            width: 100%;     
+        }
+        #menu{
+            display: block;
+            float: right;
+            position:absolute;
+            top: 0;
+            right: 0;
+            cursor: pointer;
+        }
+        nav{
+            position: relative;
+            a{float:none;}
+            a:not(:first-child){
+                display: none; 
+            }
+            .items{
+                
+            }
+        }
+    }
+}
+@media(min-width:501px){
+    nav{
+        display: flex;
+        justify-content: flex-end;   
+    }
+    #menu{
+        display: none !important;
+    }
+}
+
+
